@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>STONE-LAVA Fullscreen Cinematic Hero</title>
+<style>
+  /* --- Reset & Basic Body Setup --- */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #000000;
+  }
+
+  /* --- The Hero Container --- */
+  .bw-fullscreen-hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes text to top, controls to bottom */
+    padding: 5rem 2rem 3rem 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: white;
+  }
+
+  /* --- The Background Images (Spanning the whole hero) --- */
+  .bw-bg-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the screen without stretching */
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 0;
+  }
+
+  .bw-bg-frame.is-visible {
+    opacity: 1;
+  }
+
+  /* --- The Dark Overlay --- */
+  /* This gradient makes the top and bottom dark so text/buttons are readable, 
+     but leaves the middle slightly clearer to see the images */
+  .bw-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      rgba(2, 6, 23, 0.9) 0%, 
+      rgba(2, 6, 23, 0.4) 40%, 
+      rgba(2, 6, 23, 0.85) 100%
+    );
+    z-index: 1;
+    pointer-events: none; /* Lets you click "through" the gradient if needed */
+  }
+
+  /* --- Foreground Content (Z-Index 2) --- */
+  .bw-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .bw-hero-header {
+    max-width: 700px;
+    margin-top: 2rem;
+  }
+
+  .bw-hero-header h1 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    margin: 0 0 1rem 0;
+    line-height: 1.1;
+  }
+
+  .bw-hero-header p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+  }
+
+  /* --- The Floating Control Panel --- */
+  .bw-controls-panel {
+    margin-top: auto; /* Pushes the panel to the bottom of the container */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    background: rgba(15, 23, 42, 0.5); /* Glassmorphism effect */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Responsive breakpoints for the control panel */
+  @media (max-width: 1000px) {
+    .bw-controls-panel { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .bw-controls-panel { grid-template-columns: 1fr; }
+  }
+
+  .bw-step-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+  }
+
+  .bw-step-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Active state for the currently selected step */
+  .bw-step-btn.is-active {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
+    color: white;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .bw-step-btn strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    color: #ffffff;
+  }
+
+  .bw-step-btn span {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  /* Play button special styling */
+  .bw-play-icon {
+    display: inline-block;
+    color: #60a5fa;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+</style>
+</head>
+<body>
+
+<section class="bw-fullscreen-hero">
+  
+  <img class="bw-bg-frame is-visible" src="/assets/img/stone-lava-anim/frame-00.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-01.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-02.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-03.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-04.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-05.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-06.png" alt="">
+  <img class="bw-bg-frame" src="/assets/img/stone-lava-anim/frame-07.png" alt="">
+
+  <div class="bw-hero-overlay"></div>
+
+  <div class="bw-hero-content">
+    
+    <div class="bw-hero-header">
+      <h1>STONE-LAVA</h1>
+      <p>Select a pipeline step below to isolate features, or run the network analysis to view the automated computation process.</p>
+    </div>
+
+    <div class="bw-controls-panel">
+      
+      <button class="bw-step-btn is-active" data-type="static" data-target="0">
+        <strong>1. Raw Data Input</strong>
+        <span>Load awake intravital multimodal dataset</span>
+      </button>
+      
+      <button class="bw-step-btn" data-type="static" data-target="2">
+        <strong>2. Activity Segmentation</strong>
+        <span>Automated cellular ROI detection</span>
+      </button>
+      
+      <button class="bw-step-btn" data-type="static" data-target="5">
+        <strong>3. Vascular Tracking</strong>
+        <span>Map perivascular endfoot & arteriole motion</span>
+      </button>
+      
+      <button class="bw-step-btn" data-type="animate">
+        <strong>4. Network Synchrony</strong>
+        <span class="bw-play-icon">▶ Play Analysis Sequence</span>
+        <span>Extract synchronized events and waveforms</span>
+      </button>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".bw-step-btn");
+  const frames = document.querySelectorAll(".bw-bg-frame");
+  
+  let animationTimer = null; 
+
+  function hideAllFrames() {
+    frames.forEach(frame => frame.classList.remove("is-visible"));
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", function() {
+      
+      clearInterval(animationTimer);
+
+      buttons.forEach(b => b.classList.remove("is-active"));
+      this.classList.add("is-active");
+
+      const actionType = this.getAttribute("data-type");
+
+      if (actionType === "static") {
+        const targetIndex = parseInt(this.getAttribute("data-target"));
+        
+        hideAllFrames();
+        if(frames[targetIndex]) {
+            frames[targetIndex].classList.add("is-visible");
+        }
+
+      } else if (actionType === "animate") {
+        let currentFrameIndex = 0;
+        hideAllFrames();
+        
+        frames[0].classList.add("is-visible");
+
+        animationTimer = setInterval(() => {
+          frames[currentFrameIndex].classList.remove("is-visible");
+          
+          currentFrameIndex++;
+
+          if (currentFrameIndex >= frames.length) {
+            clearInterval(animationTimer);
+            frames[frames.length - 1].classList.add("is-visible");
+            return;
+          }
+
+          frames[currentFrameIndex].classList.add("is-visible");
+
+        }, 180); 
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
