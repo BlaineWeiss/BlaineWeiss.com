@@ -301,4 +301,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             nextFrame.classList.remove("is-entering");
             nextFrame.classList.add("is-current");
-            nextFrame.style.zIndex =
+            nextFrame.style.zIndex = "1";
+
+            currentFrameIndex = nextIndex;
+            isTransitioning = false;
+            transitionTimeoutId = null;
+          }, fadeDuration);
+
+        }, frameDuration); 
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
