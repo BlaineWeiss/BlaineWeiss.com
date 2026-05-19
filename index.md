@@ -71,67 +71,45 @@
 }
 </style>
 
-<section class="bw-video-hero">
+<section class="bw-video-hero" markdown="0">
   <video class="bw-hero-video-bg" autoplay muted loop playsinline preload="auto" poster="/assets/img/LAVAconceptart.png">
     <source src="/assets/video/STONELAVAflowvideo.mp4" type="video/mp4">
   </video>
-
   <div class="bw-hero-content">
     <div class="bw-hero-content-inner">
       <h1>STONE-LAVA</h1>
       <p>A computational framework for spatial and temporal analysis of brain activity, vascular behavior, and multimodal fluorescence imaging datasets.</p>
-      
       <div class="bw-hero-actions">
-        <a class="bw-hero-button bw-hero-button-primary" href="/assets/downloads/STONE-LAVA_Installer.exe" download>
-          Get STONE-LAVA
-        </a>
-        <button class="bw-hero-button bw-hero-button-secondary" id="launch-analysis-btn" style="cursor: pointer;">
-          Explore STONE-LAVA
-        </button>
+        <a class="bw-hero-button bw-hero-button-primary" href="/assets/downloads/STONE-LAVA_Installer.exe" download>Get STONE-LAVA</a>
+        <button class="bw-hero-button bw-hero-button-secondary" id="launch-analysis-btn" style="cursor: pointer;">Explore STONE-LAVA</button>
       </div>
     </div>
   </div>
 </section>
 
-
-<div class="bw-analysis-modal" id="analysis-modal">
+<div class="bw-analysis-modal" id="analysis-modal" markdown="0">
   <div class="bw-modal-backdrop" id="close-modal-bg"></div>
-  
   <div class="bw-modal-content">
     <div class="bw-modal-header">
-      <div class="bw-modal-title">
-        <span class="bw-status-dot"></span>
-        STONE-LAVA Analysis Environment
-      </div>
+      <div class="bw-modal-title"><span class="bw-status-dot"></span>STONE-LAVA Analysis Environment</div>
       <button class="bw-close-btn" id="close-modal-btn">✕</button>
     </div>
-
     <div class="bw-modal-body">
-      
       <div class="bw-modal-sidebar">
         <p class="bw-sidebar-label">Execution Pipeline</p>
-        
         <button class="bw-step-btn is-active" data-frame="0">
-          <strong>1. Raw Data Input</strong>
-          <span>Load awake intravital multimodal dataset</span>
+          <strong>1. Raw Data Input</strong><span>Load awake intravital multimodal dataset</span>
         </button>
-        
         <button class="bw-step-btn" data-frame="2">
-          <strong>2. Activity Segmentation</strong>
-          <span>Automated cellular ROI detection</span>
+          <strong>2. Activity Segmentation</strong><span>Automated cellular ROI detection</span>
         </button>
-        
         <button class="bw-step-btn" data-frame="5">
-          <strong>3. Vascular Tracking</strong>
-          <span>Map perivascular endfoot & arteriole motion</span>
+          <strong>3. Vascular Tracking</strong><span>Map perivascular endfoot & arteriole motion</span>
         </button>
-        
         <button class="bw-step-btn" data-frame="7">
-          <strong>4. Network Synchrony</strong>
-          <span>Extract synchronized events and waveforms</span>
+          <strong>4. Network Synchrony</strong><span>Extract synchronized events and waveforms</span>
         </button>
       </div>
-
       <div class="bw-modal-visualizer">
         <img class="bw-interactive-frame is-visible" src="/assets/img/stone-lava-anim/frame-00.png" alt="">
         <img class="bw-interactive-frame" src="/assets/img/stone-lava-anim/frame-01.png" alt="">
@@ -142,7 +120,6 @@
         <img class="bw-interactive-frame" src="/assets/img/stone-lava-anim/frame-06.png" alt="">
         <img class="bw-interactive-frame" src="/assets/img/stone-lava-anim/frame-07.png" alt="">
       </div>
-
     </div>
   </div>
 </div>
