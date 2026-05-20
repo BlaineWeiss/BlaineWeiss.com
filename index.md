@@ -696,7 +696,7 @@ cover-img: "/assets/img/TESTsupp1.gif"
 <div class="bw-section">
   <div class="bw-split">
     <div>
-      <h2>Why this matters</h2>
+      <h2>Why Build STONE-LAVA?</h2>
 
       <p>
         Awake fluorescence imaging produces data that are spatially complex, temporally dynamic, and biologically heterogeneous. Manual analysis is often slow, subjective, and difficult to reproduce.
